@@ -1,0 +1,23 @@
+[33mcommit 2f3fbaf4ec486f210149cd36c894aefa19e34b44[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: CassianoOliveira23 <cassiano.borba@rede.ulbra.br>
+Date:   Mon Jul 22 18:00:58 2024 -0300
+
+    Add initial set of files
+
+.env
+.gitignore
+bin/console
+composer.json
+composer.lock
+config/bundles.php
+config/packages/cache.yaml
+config/packages/framework.yaml
+config/packages/routing.yaml
+config/preload.php
+config/routes.yaml
+config/routes/framework.yaml
+config/services.yaml
+public/index.php
+src/Controller/.gitignore
+src/Kernel.php
+symfony.lock
