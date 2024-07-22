@@ -24,8 +24,13 @@ class VinylController extends AbstractController {
     #[Route('/browse/{slug}', name: 'browse_genre', methods: ['GET'])]
     public function browse(string $slug = null): Response
     {
-        $title = u(str_replace('-', ' ', $slug))->title(true);
-        return new Response('Genre: ' . $title);
+        if($slug){
+            $title = 'Genre: ' .u(str_replace('-', ' ', $slug))->title(true);
+        } else {
+            $title = 'All Genres';
+        }
+        
+        return new Response($title);
     }
 }
 
