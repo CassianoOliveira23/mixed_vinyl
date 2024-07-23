@@ -6,6 +6,8 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Twig\Environment;
+
 use function Symfony\Component\String\u;
 
 
@@ -14,7 +16,7 @@ use function Symfony\Component\String\u;
 #[Route('/')]
 class VinylController extends AbstractController {
 
-    #[Route('/', name: 'vinyl_homepage', methods: ['GET'])]
+    #[Route('/', name: 'app_homepage', methods: ['GET'])]
     public function homepage() {
 
         $tracks  = [
@@ -38,7 +40,7 @@ class VinylController extends AbstractController {
 
 
     // SLUG is a url safe name, is always a string
-    #[Route('/browse/{slug}', name: 'browse_genre', methods: ['GET'])]
+    #[Route('/browse/{slug}', name: 'app_browse', methods: ['GET'])]
     public function browse(string $slug = null): Response
     {
         $genre = $slug ? u(str_replace('-', ' ', $slug))->title(true) : null;
