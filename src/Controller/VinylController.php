@@ -16,7 +16,24 @@ class VinylController extends AbstractController {
 
     #[Route('/', name: 'vinyl_homepage', methods: ['GET'])]
     public function homepage() {
-        return $this->json(['message' => 'Break up a vinil?']);
+
+        $tracks  = [
+            ['song' =>'Hit em up', 'artist' => '2Pac'],
+            ['song' =>'Master of the Puppets', 'artist' => 'Metallica'], 
+            ['song' =>'They Dont Care About Us', 'artist' => 'Michal Jackson'],
+            ['song' =>'Temple of Hate', 'artist' => 'Angra'],
+            ['song' =>'I Wanna be Sadated', 'artist' => 'Ramones'],
+            ['song' =>'Juicy', 'artist' => 'Notorius BIG'],
+        ];
+
+        dump($tracks);
+
+
+        //render: The controlles must always return a Response object
+        return $this->render('vinyl/homepage.html.twig', [
+            'title' => 'PB & Jams',
+            'tracks' => $tracks,
+        ]);
     }
 
 
@@ -24,13 +41,11 @@ class VinylController extends AbstractController {
     #[Route('/browse/{slug}', name: 'browse_genre', methods: ['GET'])]
     public function browse(string $slug = null): Response
     {
-        if($slug){
-            $title = 'Genre: ' .u(str_replace('-', ' ', $slug))->title(true);
-        } else {
-            $title = 'All Genres';
-        }
+        $genre = $slug ? u(str_replace('-', ' ', $slug))->title(true) : null;
         
-        return new Response($title);
+        return $this->render('vinyl/browse.html.twig', [
+            'genre' => $genre,
+        ]);
     }
 }
 
